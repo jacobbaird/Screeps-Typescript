@@ -1,5 +1,3 @@
-import { ErrorMapper } from "utils/ErrorMapper";
-
 function clearCreepMemory(){
   // Automatically delete memory of missing creeps
   for (const name in Memory.creeps) {
@@ -14,8 +12,4 @@ function mainLoop(){
   clearCreepMemory();
 }
 
-// When compiling TS to JS and bundling with rollup, the line numbers and file names in error messages change
-// This utility uses source maps to get the line numbers and file names of the original, TS source code
-export const loop = ErrorMapper.wrapLoop(() => {
-  mainLoop();
-});
+export const loop = mainLoop();
